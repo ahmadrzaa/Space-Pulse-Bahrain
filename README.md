@@ -1,155 +1,143 @@
-Space Pulse • Exoplanet AI
+<table>
+  <tr>
+    <td>
 
-A World Away: Hunting for Exoplanets with AI — NASA Space Apps 2025
+<h1>🚀 Space Pulse • Exoplanet AI <br>(Team-SpacePluseBahrain)</h1>
 
-Space Pulse is a live end-to-end app for working with exoplanet survey data.
+<b>Challenge: A World Away: Hunting for Exoplanets with AI — NASA Space Apps 2025</b>  
+Space Pulse is a live end-to-end web app that uses real NASA data to analyze exoplanets using AI and interactive visual tools.
 
-Pull real light curves from NASA/MAST (Kepler, K2, TESS)
+---
 
-Plot and phase-fold light curves in the browser
+<h2>🌌 Features</h2>
 
-Run a fast BLS (Box Least Squares) baseline classifier
+- Pull real light curves from NASA/MAST (Kepler, K2, TESS)  
+- Plot and phase-fold light curves directly in the browser  
+- Run a fast BLS (Box Least Squares) baseline classifier  
+- Train a tabular ML model on the NASA KOI dataset  
+- Live, end-to-end API integrations — nothing is mocked
 
-Train a tabular model on the NASA Exoplanet Archive KOI dataset and view metrics
+---
 
-This is not a mock. Every run on Analyze calls NASA/MAST via Lightkurve
-. KOI training calls the NASA Exoplanet Archive TAP service live.
+<h2>🧰 Technologies Used</h2>
 
-Stack
+<b>Frontend:</b> Next.js 15 (App Router), TypeScript, Plotly.js  
+<b>Backend:</b> FastAPI, Uvicorn, Lightkurve, Astropy (BLS), scikit-learn, pandas, numpy  
+<b>Data:</b> NASA/MAST (Kepler/K2/TESS), NASA Exoplanet Archive (KOI cumulative)
 
-Frontend: Next.js 15 (App Router), TypeScript, Plotly.js
+---
 
-Backend: FastAPI, Uvicorn, Lightkurve, Astropy (BLS), scikit-learn, pandas, numpy
+<h2>📁 Project Structure</h2>
 
-Data sources: MAST (Kepler/K2/TESS light curves), NASA Exoplanet Archive (KOI cumulative)
-
-Repository layout
+<pre>
 space-pulse/
 ├─ backend/
-│  ├─ app.py               # FastAPI: /lightcurve, /classify, /phasefold, /train/koi, /metrics
-│  ├─ koi_train.py         # KOI download + tabular training
-│  ├─ models/              # (generated) trained model + metrics JSON
-│  ├─ requirements.txt     # Python deps
-│  └─ .venv/               # local virtualenv (ignored)
+│  ├─ app.py — FastAPI: /lightcurve, /classify, /phasefold, /train/koi, /metrics
+│  ├─ koi_train.py — KOI download + model training
+│  ├─ models/ — trained model + metrics
+│  └─ requirements.txt
 ├─ frontend/
-│  ├─ src/app/             # routes: /, /analyze, /models, /about, /team
-│  ├─ src/components/      # Header, Footer, charts, search, team cards
-│  ├─ src/lib/             # api.ts, types, config
-│  ├─ public/              # logos & team photos
-│  ├─ .env.local           # NEXT_PUBLIC_API_BASE=http://localhost:8000
+│  ├─ src/app/ — routes: /, /analyze, /models, /about, /team
+│  ├─ components/, lib/, public/
+│  ├─ .env.local → NEXT_PUBLIC_API_BASE=http://localhost:8000
 │  └─ package.json
-├─ .gitignore
-└─ README.md
+</pre>
 
-Quick start (local)
-1) Backend (FastAPI)
+---
+
+<h2>⚡ Quick Start (Local)</h2>
+
+<b>Backend:</b>  
+<pre>
 cd backend
 python -m venv .venv
-# Windows:
 .venv\Scripts\activate
 pip install -r requirements.txt
 uvicorn app:app --reload --port 8000
+</pre>
 
-
-API: http://localhost:8000
-
-2) Frontend (Next.js)
+<b>Frontend:</b>  
+<pre>
 cd frontend
 npm install
-# Ensure:
-# echo NEXT_PUBLIC_API_BASE=http://localhost:8000 > .env.local
+echo NEXT_PUBLIC_API_BASE=http://localhost:8000 > .env.local
 npm run dev
+</pre>
+
+---
+
+<h2>🧪 Demo Flow (Judges Walkthrough)</h2>
+
+<b>Analyze:</b>  
+Choose mission + ID (e.g. TESS/TIC 261136679)  
+→ Fetch light curve  
+→ Classify with BLS  
+→ Phase-Fold  
+→ Export results (CSV/JSON)
+
+<b>Models:</b>  
+Train on KOI data → Live model training  
+→ View metrics: ROC-AUC, precision, confusion matrix
+
+<b>About / Team:</b>  
+Goals, limitations, roadmap, bios
+
+---
+
+<h2>📡 API Overview</h2>
+
+- GET `/lightcurve?mission=TESS&ID=TIC`  
+- POST `/classify` → `{ label, probs, details }`  
+- POST `/phasefold` → `{ period_days, flux, phase, snr }`  
+- POST `/train/koi` → triggers training  
+- GET `/metrics` → returns model metrics
+
+---
+
+<h2>⚠ Known Limitations</h2>
+
+- BLS baseline model only (KOI model integration coming)  
+- No persistent cache (all fetches live)  
+- K2 requires fallback handling  
+- First-time fetch takes ~5–20s  
+- Chart points capped to ~8,000 for speed
+
+---
+
+<h2>♻ Reproducibility</h2>
+
+- Use `pip freeze > requirements.txt` after backend updates  
+- Node 18+ recommended  
+- Set API base in: `frontend/.env.local` →  
+  `NEXT_PUBLIC_API_BASE=http://localhost:8000`
+
+---
+
+<h2>🙌 Credits</h2>
+
+- NASA/MAST via Lightkurve  
+- NASA Exoplanet Archive (TAP)  
+- Astropy BLS  
+- Plotly.js
+
+---
+
+<h2>👥 Team</h2>
+
+- <b>Ahmad Raza</b> — Team Lead, AI Chatbot Engineer  
+- <b>Zahraa Sayed Mahmood</b> — UI Developer  
+- <b>Nasser Zainalabedin</b> — Frontend & User Journey  
+- <b>Amina Kashfi</b>, <b>Deena Al Malki</b>, <b>Mohammed Hejairi</b> — Data & QA
 
 
-App: http://localhost:3000
 
-Demo flow (for judges)
-Analyze
+---
 
-Pick mission + ID (examples: TESS/TIC 261136679, K2/EPIC 201505350, Kepler/KIC 11442793).
+<h2>📄 License</h2>
 
-Fetch → live light curve from MAST.
+MIT License (code).  
+Data usage follows NASA source terms.
 
-Classify → BLS baseline label + details.
-
-Phase-Fold → phase vs flux at best BLS period.
-
-Export RAW/PHASE data as JSON or CSV.
-
-Models
-
-Train (KOI) → downloads KOI cumulative via TAP, trains a Gradient Boosting model.
-
-Show metrics → ROC-AUC, average precision, confusion matrix, features used.
-
-About / Team
-
-Goals, limitations, roadmap, and team profiles.
-
-API (short)
-
-GET /lightcurve?mission={TESS|KEPLER|K2}&id={TIC|KIC|EPIC}
-
-POST /classify → { label, probability, probs, details }
-
-POST /phasefold → { period_days, t0_days, duration_days, bls_snr, points:[{phase,flux}] }
-
-POST /train/koi → triggers live KOI training
-
-GET /metrics → latest training metrics or baseline status
-
-Known limitations
-
-Currently a BLS baseline (fast & transparent); integrating the trained KOI model into the classify path is the next step.
-
-K2 can require alternate authors or relaxed quality masks; we try K2SFF → EVEREST → generic, and if needed quality_bitmask="none".
-
-No persistent cache; all fetches are live.
-
-Performance notes
-
-First fetch per target may take 5–20s (download + stitching).
-
-Returned points are capped (default 8,000) for responsive charts.
-
-Phase-fold uses the same BLS period as classify for consistency.
-
-Reproducibility
-
-Pin backend deps after changes:
-
-cd backend
-pip freeze > requirements.txt
-
-
-Node 18+ recommended.
-
-Frontend base URL in frontend/.env.local:
-
-NEXT_PUBLIC_API_BASE=http://localhost:8000
-
-Credits
-
-NASA/MAST via Lightkurve for light curves
-
-NASA Exoplanet Archive (TAP) for KOI cumulative
-
-Astropy BLS implementation
-
-Plotly.js for charts
-
-Team
-
-Ahmad Raza — Team Lead, AI Chatbot Engineer
-
-Zahraa Sayed Mahmood — UI Developer
-
-Noora Alabbasi — Frontend & User Journey
-
-Mahdi Khalil Ebrahim, Zainab Ramadhan Ali Kadhem, Shayma Ali — Data & QA
-
-(Photos live in frontend/public/team/ and can be updated anytime.)
-
-License
-
-MIT (code). Data remains under the terms of the original NASA sources.
+   
+  </tr>
+</table>
