@@ -18,6 +18,8 @@ Space Pulse is a live end-to-end web app that uses real NASA data to analyze exo
 - Live, end-to-end API integrations — nothing is mocked
 
 ---
+![WhatsApp Image 2025-10-05 at 21 24 41](https://github.com/user-attachments/assets/91a3ec70-34bc-4d3b-af28-4110eabd61e5)
+
 
 <h2>🧰 Technologies Used</h2>
 
@@ -122,12 +124,13 @@ Goals, limitations, roadmap, bios
 
 ---
 
-<h2>👥 Team</h2>
+## 👥 Team Credits
 
-- <b>Ahmad Raza</b> — Team Lead, AI Chatbot Engineer  
-- <b>Zahraa Sayed Mahmood</b> — UI Developer  
-- <b>Nasser Zainalabedin</b> — Frontend & User Journey  
-- <b>Amina Kashfi</b>, <b>Deena Al Malki</b>, <b>Mohammed Hejairi</b> — Data & QA
+- **Ahmad Raza** — Team Lead, AI & Chatbot Engineer  
+- **Mohammed Hejairi** — UI Developer  
+- **Nasser Zainalabedin** — User Journey Designer  
+- **Amina Kashfi** — Frontend Developer & Presentation Designer  
+- **Deena Al Malki** — QA Specialist, Frontend Developer & Presentation Designer
 
 
 
