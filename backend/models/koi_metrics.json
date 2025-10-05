@@ -1,0 +1,43 @@
+{
+  "timestamp": 1759561432,
+  "samples": 9564,
+  "test_size": 0.2,
+  "classes": [
+    "confirmed",
+    "candidate",
+    "false_positive"
+  ],
+  "roc_auc_ovr": 0.9096690775030729,
+  "avg_precision_macro": 0.8000248850633119,
+  "confusion_matrix": [
+    [
+      480,
+      43,
+      26
+    ],
+    [
+      64,
+      187,
+      145
+    ],
+    [
+      59,
+      109,
+      800
+    ]
+  ],
+  "features_used": [
+    "koi_period",
+    "koi_time0bk",
+    "koi_duration",
+    "koi_depth",
+    "koi_impact",
+    "koi_dor",
+    "koi_model_snr",
+    "koi_prad",
+    "koi_ror",
+    "koi_steff",
+    "koi_slogg",
+    "koi_srad"
+  ]
+}

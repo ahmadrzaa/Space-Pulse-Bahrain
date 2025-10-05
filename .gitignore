@@ -1,0 +1,58 @@
+# ----------------------
+# OS junk
+# ----------------------
+.DS_Store
+Thumbs.db
+
+# ----------------------
+# Logs
+# ----------------------
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ----------------------
+# Frontend (Next.js / Node)
+# ----------------------
+frontend/node_modules/
+frontend/.next/
+frontend/.vercel/
+frontend/.turbo/
+frontend/out/
+frontend/.env.local
+frontend/.env*
+# screenshots/build artifacts to public/tmp, ignore it:
+frontend/public/tmp/
+
+# ----------------------
+# Backend (Python / FastAPI)
+# ----------------------
+backend/.venv/
+backend/__pycache__/
+backend/.pytest_cache/
+backend/.mypy_cache/
+backend/*.egg-info/
+backend/.ipynb_checkpoints/
+backend/.cache/
+backend/tmp/
+backend/data/
+
+# ----------------------
+# Model artifacts
+# ----------------------
+# Keep metrics JSON in git so judges can see them,
+# but ignore large/binary model files.
+backend/models/*.pkl
+# want to ignore metrics, uncomment the next line:
+# backend/models/*.json
+
+# ----------------------
+# Editors/IDE
+# ----------------------
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/

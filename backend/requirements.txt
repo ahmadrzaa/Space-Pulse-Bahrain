@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+pydantic>=2,<3   # or pin 1.10.* and set FASTAPI pydantic-compat if you want v1
+numpy
+scipy
+scikit-learn
+astropy
+lightkurve
+pandas
+requests
